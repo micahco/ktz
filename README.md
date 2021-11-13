@@ -1,6 +1,6 @@
 # Clippings.py
 
-(tested on Python *2.7.17* & *3.9.8* Win 10)
+<sup>tested on Python *2.7.17* & *3.9.8* Win 10</sup>
 
 Script (w/ GUI) to add kindle highlights to Zettelkasten
 
