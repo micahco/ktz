@@ -46,3 +46,16 @@ Loc: {{loc}}
         Clippings.py
 /slip-box
 ```
+
+#### Workflow
+
+For further reference, my workflow is as follows:
+
+* Read a book on kindle
+* As I read, highlight text that I later want to make notes on. If I need to remember something specific to the text that I want to make note of, I write it down on a piece of paper along with the location.
+* Once I've finished reading, connect kindle to laptop.
+* Run the script with the kindle's `my-clippings.txt`
+* Go throught each note I've just transfered to my Zettelkasten and write down thoughts based on the quotes and link those thoughts to my slip box and other notes.
+* Once the clippings are transfered into my Zettlekasten, I delete the .txt file from my kindle so that I have a blank file once I begin a new book.
+
+This workflow isn't entirely within the Zettlekasten philosophy, but I've found it works best with how I read and how I take notes.
