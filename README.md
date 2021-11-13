@@ -24,6 +24,7 @@ Enter the literature data for the book (all inputs are required). The program wi
 * The program relies on a few user vars, one being a pre-determined literature template. My template (`Clipping.md`) looks like:
 
 `
+    
     Date: {{date}} 
     Title: {{title}}
     Author: {{author}}
@@ -37,6 +38,7 @@ Enter the literature data for the book (all inputs are required). The program wi
 
 * Other user vars include the path to the template file (TEMPLATE_PATH) and literature directory (CLIPPING_PATH). For reference, a diagram of my Zettelkasten:
 `
+    
     /!templates
         Clipping.md <-- TEMPLATE_PATH
     /literature <-- CLIPPING_PATH
