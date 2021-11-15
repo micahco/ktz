@@ -18,7 +18,7 @@ Enter the literature data for the book (all inputs are required). The program wi
 
 * The `my-clippings.txt` file should only contain *Highlights* for the one specific book you wish to transfer to your Zettelkasten. The script does **not** support transferring multiple books at once, nor does it support Notes or Bookmarks (only *Highlights*).
 
-* There are already (better) more complex plugins made for the purpose of sending your Kindle notes to Zettlekasten. The reason I wrote this is because I just wanted a basic script for my specific use case: to simply transfer Kindle Clippings highlights (from the .txt file) to my Zettlekasten as literature notes. Here are some plugins that may be easier and do much more for you:
+* There are already (better) more complex plugins made for the purpose of syncing your Kindle with Zettlekasten. The reason I wrote this is because I just wanted a basic script for my specific use case: to simply transfer Kindle Clippings highlights (from the .txt file) to my literature notes. Here are some platform specific plugins that may be easier and do much more for you:
     * [hadynz/obsidian-kindle-plugin](https://github.com/hadynz/obsidian-kindle-plugin)
 
 * The program relies on a few user vars, one being a predetermined literature template. My template (`Clipping.md`) looks like:
