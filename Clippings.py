@@ -48,11 +48,11 @@ with open(easygui.fileopenbox(), 'r', encoding=ENCODE_KINDLE, errors='ignore') a
         i[0] = i[0].split('\n- ') # split info --> [title , data]
         data = i[0][1].replace('Note', 'Highlight').split('Highlight on Page ')[1].split(' | ') # split data --> [page , loc , date]
         title = i[0][0].split('(')[0].strip() # remove author from title
-        loc = data[1].split('Loc. ')[1].split('-')[0].strip() # remove prefix and trailing quote
-        date = data[2].split('Added on ')[1] # remove prefix quote
+        loc = data[1].split('Loc. ')[1].split('-')[0].strip()
+        date = data[2].split('Added on ')[1]
         date = datetime.strptime(date, '%A, %B %d, %Y, %I:%M %p') # format date
         date = date.strftime(DATE_FORMAT)
-        quote = i[1].strip() # remove trailing /n from quote
+        quote = i[1].strip()
         HIGHLIGHTS.append(Highlight(title, loc, date, quote))
 
 
