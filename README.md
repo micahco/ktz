@@ -14,7 +14,7 @@ Download the required packages:
 Run from the current directory:
 `python ktz.py`
 
-Enter the literature data for the book (all inputs are required). The program will then prompt a file explorer dialog where you will select the `my-clippings.txt` file for that specific book.
+Enter the literature data for the book (all inputs are required). The program will then prompt a file explorer dialog where you will select the `My Clippings.txt` file for that specific book.
 
 #### Considerations
 
