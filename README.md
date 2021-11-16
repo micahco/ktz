@@ -4,20 +4,20 @@
 
 Script (w/ GUI) to add kindle clippings to Zettelkasten
 
-<sup>tested on Python *2.7.17* & *3.9.8* Win 10</sup>
+<sup>WIP: rewriting script in golang</sup>
 
 
 ## Usage
 
-Download the required packages:
-`pip install -r requirements.txt`
+* Download the required packages: `pip install -r requirements.txt`
 
-Connect your kindle via usb
+* Connect kindle via usb
 
-Run from the current directory:
-`python ktz.py`
+* Run from the current directory: `python ktz.py`
 
-The program will then prompt a file explorer dialog where you will select the `My Clippings.txt` file on your kindle
+* The program will then prompt a file explorer dialog where you will select the `My Clippings.txt` file on your kindle
+
+* For each book in the file, the program will prompt the user for book data (`authorFirst`, `authorLast`, `yearPub`)
 
 #### Configuration
 
