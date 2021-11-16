@@ -18,9 +18,6 @@ Enter the literature data for the book (all inputs are required). The program wi
 
 #### Considerations
 
-* There are already (better) more complex plugins made for the purpose of syncing your Kindle with Zettlekasten. The reason I wrote this is because I just wanted something simple to transfer the 'My Clippings.txt' file to my literature notes. Here are some platform specific plugins that may be easier and do much more for you:
-    * [hadynz/obsidian-kindle-plugin](https://github.com/hadynz/obsidian-kindle-plugin)
-
 * The program relies on a few user vars, one being a predetermined literature template. My template (`Clipping.md`) looks like:
 
 ```
@@ -57,7 +54,6 @@ For further reference, my workflow is as follows:
 * Run the script with the kindle's `My Clippings.txt`
 * Copy the `My Clippings.txt` to the literature folder I've just created with the script (as a backup)
 * Delete the `My Clippings.txt` file from kindle. This allows me to have a blank file once I start another book
-    * (if I'm reading multiple books at once, I just manually separate them into their own files. Perhaps later I will edit the program to do handle multiple books.)
 * Finally I go through each note I've just transferred to my Zettelkasten and write down thoughts based on the highlights and fleeting notes. I then link those thoughts to my slip box and other books.
 
 <sup>This workflow isn't entirely within the Zettelkasten philosophy, but it works for me.</sup>
