@@ -2,9 +2,9 @@
 
 *kindle-to-zettelkasten*
 
-Script (w/ GUI) to add kindle clippings to Zettelkasten
+transfer kindle clippings to Zettelkasten
 
-<sup>tested on Python *2.7.17* & *3.9.8* Win 10</sup>
+<sup>tested on Python *3.10.0p* Win 10</sup>
 
 
 ## Usage
@@ -14,14 +14,26 @@ Download the required packages:
 
 Connect your kindle via usb
 
-Run from the current directory:
+Run the program:
 `python ktz.py`
 
 The program will then prompt a file explorer dialog where you will select the `My Clippings.txt` file on your kindle
 
 #### Configuration
 
-* The program relies on a few user vars, one being a predetermined literature template (TEMPLATE_PATH). My template (`Clipping.md`) looks like:
+`ktz/config.py`
+
+* `TEMPLATE_PATH`: path to the kindle clipping template
+    
+    Your template can include the following `{{outputs}}`:
+    * `date` (when the note was taken)
+    * `title` (Moby Dick)
+    * `author` (First Last)
+    * `year` (published)
+    * `loc` (location on kindle)
+    * `text` (highlighted text and any note written)
+
+    For reference, here is what my template looks like:
 
 ```
 Date: {{date}} 
@@ -32,20 +44,13 @@ Loc: {{loc}}
 
 ---
 
->{{note}}
+>{{text}}
 ```
 
-* Other user vars include the path to the template file (TEMPLATE_PATH) and literature directory (CLIPPING_PATH). For reference, a diagram of my Zettelkasten:
+* `LITERATURE_PATH`: path to literature notes directory in your Zettelkasten
 
-```
-/!templates
-    Clipping.md <-- TEMPLATE_PATH
-/literature <-- CLIPPING_PATH
-/scripts
-    /ktz
-        ktz.py
-/slip-box
-```
+* `DATE_FORMAT`: date format for the zettlekasten note
+
 
 #### Workflow
 

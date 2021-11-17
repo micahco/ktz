@@ -1,2 +1,11 @@
 # testing files
 *.txt
+
+# python
+__pycache__
+Pipfile.lock
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
