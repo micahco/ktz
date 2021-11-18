@@ -1,5 +1,6 @@
 # testing files
 *.txt
+!requirements.txt
 
 # python
 __pycache__

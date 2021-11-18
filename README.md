@@ -4,7 +4,7 @@
 
 transfer kindle clippings to Zettelkasten
 
-<sup>tested on Python *3.10.0p* Win 10</sup>
+<sup>tested on Python *3.10.0* Win 10</sup>
 
 
 ## Usage
