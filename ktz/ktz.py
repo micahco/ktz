@@ -11,6 +11,11 @@ import config
 from models import Book, Note
 
 
+'''
+TODO: test config file
+'''
+
+
 # instantiate global vars
 BOOKS: Dict[str, Book] = {}
 

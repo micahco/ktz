@@ -9,19 +9,19 @@ transfer kindle clippings to Zettelkasten
 
 ## Usage
 
-Download the required packages:
-`pip install -r requirements.txt`
+* Download the required packages: `pip install -r requirements.txt`
 
-Connect your kindle via usb
+* Edit the `config.py` paths
 
-Run the program:
-`python ktz.py`
+* Connect your kindle via usb
 
-The program will then prompt a file explorer dialog where you will select the `My Clippings.txt` file on your kindle
+* Run the program: `python ktz.py`
+
+* The program will then prompt a file explorer dialog where you will select the `My Clippings.txt` file on your kindle
 
 #### Configuration
 
-`ktz/config.py`
+Configure the program for use by editing `config.py`
 
 * `TEMPLATE_PATH`: path to the kindle clipping template
     
@@ -31,7 +31,7 @@ The program will then prompt a file explorer dialog where you will select the `M
     * `author` (First Last)
     * `year` (published)
     * `loc` (location on kindle)
-    * `text` (highlighted text and any note written)
+    * `text` (highlighted text and notes)
 
     For reference, here is what my template looks like:
 
@@ -49,7 +49,7 @@ Loc: {{loc}}
 
 * `LITERATURE_PATH`: path to literature notes directory in your Zettelkasten
 
-* `DATE_FORMAT`: date format for the zettlekasten note
+* `DATE_FORMAT`: [strftime](https://strftime.org/) format for {{date}} output
 
 
 #### Workflow
