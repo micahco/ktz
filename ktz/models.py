@@ -1,40 +1,36 @@
 #!/usr/bin/python
-import config
+from config import Config
 
 class Note:
     loc: str
     date: str
     text: str
-    path: str
 
     def __init__(self, loc: str, date: str, text: str):
         self.loc = loc
         self.date = date
         self.text = text
 
-    def __str__(self) -> str:
-        return 'LOC: ' + self.loc + '\nDATE: ' + self.date + '\nTEXT: ' + self.text
-
 
 class Book:
     title: str
-    authorFirst: str
-    authorLast: str
-    yearPub: str
+    author_first: str
+    author_last: str
+    year_published: str
     notes: list[Note]
 
-    def __init__(self, title: str, authorFirst: str, authorLast: str, yearPub: str, n: Note):
-        self.authorFirst = authorFirst
-        self.authorLast = authorLast
+    def __init__(self, title: str, author_first: str, author_last: str, year_published: str, note: Note):
         self.title = title
-        self.yearPub = yearPub
-        self.notes = [n]
+        self.author_first = author_first
+        self.author_last = author_last
+        self.year_published = year_published
+        self.notes = [note]
 
-    def __str__(self) -> str:
-        return 'len: ' + str(len(self.notes))
+    def add(self, note: Note) -> None:
+        self.notes.append(note)
 
-    def add(self, n: Note) -> None:
-        self.notes.append(n)
+    def get_author(self) -> str:
+        return self.author_first + ' ' + self.author_last
 
-    def getDir(self) -> str:
-        return config.LITERATURE_PATH + '/' + self.authorLast + self.yearPub
+    def get_dir(self, literature_path: str) -> str:
+        return literature_path + '/' + self.author_last + self.year_published

@@ -1,8 +1,29 @@
-# path to the kindle clipping template
-TEMPLATE_PATH = 'C:/Users/MAC/Zettelkasten/Vanitas/!templates/Kindle.md'
+#!/usr/bin/python
+from configparser import RawConfigParser
+from os import path
 
-# path to the literature directory in your zettelkasten
-LITERATURE_PATH = 'C:/Users/MAC/Zettelkasten/Vanitas/literature'
+class Config:
+    template_path: str
+    literature_path: str
+    date_format: str
 
-# date format for the zettlekasten note
-DATE_FORMAT = '%Y%m%d'
+    def __init__(self):
+        config = RawConfigParser()
+        config.read('config.ini')
+        self.template_path = config['PATHS']['TemplatePath']
+        self.literature_path = config['PATHS']['LiteraturePath']
+        self.date_format = config['TEMPLATE']['DateFormat']
+
+    def validate(self) -> None:
+        try:
+            self._is_valid()
+        except FileNotFoundError as err:
+            raise Exception('FileNotFoundError (' + err.args[0] + '): ' + err.args[1])
+        except NotADirectoryError as err:
+            raise Exception('NotADirectoryError (' + err.args[0] + '): ' + err.args[1])
+
+    def _is_valid(self) -> None:
+        if not path.isfile(self.template_path):
+            raise FileNotFoundError('TEMPLATE_PATH', self.template_path)
+        if not path.isdir(self.literature_path):
+            raise NotADirectoryError('LITERATURE_PATH', self.literature_path)
