@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from config import Config
 from app import App
+from helpers import exit_
 
 config = Config()
 app = App(config)
@@ -8,12 +9,12 @@ app = App(config)
 try:
     config.validate()
 except Exception as err:
-    app.exit_(err.args[0])
+    exit_(err.args[0])
 
 try:
     app.parse()
 except:
-    app.exit_('ABORTED')
+    exit_('ABORTED')
 finally:
     app.write()
-    app.exit_('TRANSFER COMPLETE')
+    exit_('TRANSFER COMPLETE')

@@ -63,11 +63,6 @@ class App:
                 with open(path, 'w', encoding='utf-8') as file:
                     file.write(data)
 
-    def exit_(self, msg: str) -> None:
-        print(msg)
-        input('Press any key to exit')
-        os._exit(0)
-
     # validate clipping item
     def _is_valid_clipping(self, clipping: str) -> bool:
         return ' | Added on ' in clipping
