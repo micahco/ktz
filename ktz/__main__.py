@@ -4,10 +4,12 @@ from app import App
 
 config = Config()
 app = App(config)
+
 try:
     config.validate()
 except Exception as err:
     app.exit_(err.args[0])
+
 try:
     app.parse()
 except:
