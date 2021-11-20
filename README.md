@@ -23,7 +23,7 @@ transfer kindle clippings to Zettelkasten
 
 Configure the program for use by editing `config.ini`
 
-* `TEMPLATE_PATH`: path to your new note template
+* `TemplatePath`: path to your new note template
     
     Your template can include the following `{{outputs}}`:
     * `date` (when the note was taken)
@@ -47,9 +47,9 @@ Loc: {{loc}}
 >{{text}}
 ```
 
-* `LITERATURE_PATH`: path to your Zettelkasten's literature notes directory
+* `LiteraturePath`: path to your Zettelkasten's literature notes directory
 
-* `DATE_FORMAT`: [strftime](https://strftime.org/) format for {{date}} output
+* `DateFormat`: [strftime](https://strftime.org/) format for {{date}} output
 
 
 #### Workflow
