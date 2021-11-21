@@ -75,7 +75,7 @@ class App:
 
     # handle duplicate note files
     def _validate_note_path(self, path: str, data: str, loc: str) -> str:
-        copy = 1
+        copy = 0
         while (os.path.isfile(path)):
             copy += 1
             if (copy==10): break # overflow
@@ -86,7 +86,7 @@ class App:
                 break
             else:
                 filename, ext = os.path.splitext(path)
-                if copy == 2:
+                if copy == 1:
                     filename = f'{filename}-{copy}'
                 else:
                     filename = filename.replace(f'-{copy-1}', f'-{copy}')
