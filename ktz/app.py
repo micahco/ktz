@@ -50,7 +50,6 @@ class App:
             if not os.path.isdir(dir_):
                 os.mkdir(dir_)
             for note in book.notes:
-                path = self._validate_note_path(dir_ + '/' + book.author_last + book.year_published + '-' + note.loc + '.md')
                 # replace template_data with new data
                 data = template_data.replace('{{date}}', note.date)
                 data = data.replace('{{title}}', book.title)
@@ -58,6 +57,8 @@ class App:
                 data = data.replace('{{year}}', book.year_published)
                 data = data.replace('{{loc}}', note.loc)
                 data = data.replace('{{text}}', note.text)
+                path = dir_ + '/' + book.author_last + book.year_published + '-' + note.loc + '.md'
+                path = self._validate_note_path(path, data, note.loc)
                 with open(path, 'w', encoding='utf-8') as file:
                     file.write(data)
 
@@ -73,12 +74,21 @@ class App:
         return ' | Added on ' in clipping
 
     # handle duplicate note files
-    def _validate_note_path(self, path: str) -> str:
-        if os.path.isfile(path):
-            path = path.replace('.md', '-2.md')
-            i = 2
-            while (os.path.isfile(path)):
-                i += 1
-                if (i==100): break # overflow
-                path = path[:-4] + str(i) + path[-3:]
+    def _validate_note_path(self, path: str, data: str, loc: str) -> str:
+        copy = 1
+        while (os.path.isfile(path)):
+            copy += 1
+            if (copy==10): break # overflow
+            # check if same note
+            with open(path, 'r', encoding='utf-8') as file:
+                file_data = file.read()
+            if data == file_data:
+                break
+            else:
+                filename, ext = os.path.splitext(path)
+                if copy == 2:
+                    filename = f'{filename}-{copy}'
+                else:
+                    filename = filename.replace(f'-{copy-1}', f'-{copy}')
+                path = f'{filename}{ext}'
         return path
