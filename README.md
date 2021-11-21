@@ -7,18 +7,6 @@ transfer kindle clippings to Zettelkasten
 <sup>tested on Python *3.10.0* Win 10</sup>
 
 
-## Usage
-
-* Run `setup.py` to generate executable script
-
-* Connect your kindle via usb
-
-* Run the executable script
-
-* Create config file
-
-* 
-
 #### Configuration
 
 Configure the program for use by editing `config.ini`
@@ -60,7 +48,6 @@ For further reference, my workflow is as follows:
 * As I read, highlight text that I later want to make notes on. If I need to remember something specific to the text then I type in a short note.
 * Once I've finished reading, connect kindle to laptop.
 * Run the script with the kindle's `My Clippings.txt`
-* Copy the `My Clippings.txt` to the literature folder I've just created with the script (as a backup)
 * Delete the contents of `My Clippings.txt`. This allows me to have a blank file once I start a new book
 * Later I go through each note I've just transferred to my Zettelkasten and write down thoughts based on the highlights and fleeting notes. I then link those thoughts to my slip box and other books.
 
