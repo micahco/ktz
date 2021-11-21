@@ -12,7 +12,7 @@ class Config():
     store: dict
 
     def __init__(self):
-        self._rcp = RawConfigParser()
+        self._rcp = RawConfigParser(comment_prefixes='/', allow_no_value=True)
         self._rcp.optionxform = str
         self.path = os.path.join(os.getcwd(), self._PATH)
         

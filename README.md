@@ -7,7 +7,7 @@ transfer kindle clippings to Zettelkasten
 <sup>tested on Python *3.10.0* Win 10</sup>
 
 
-#### Configuration
+## Configuration
 
 Configure the program for use by editing `config.ini`
 
@@ -39,8 +39,11 @@ Loc: {{loc}}
 
 * `DateFormat`: [strftime](https://strftime.org/) format for {{date}} output
 
+* `MyClippingsPath`: (*optional*) default path to `My Clippings.txt` file.
+    * Example: `MyClippingsPath = D:\Documents\My Clippings.txt`
 
-#### Workflow
+
+## Workflow
 
 For further reference, my workflow is as follows:
 
