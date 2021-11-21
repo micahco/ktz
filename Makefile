@@ -2,4 +2,7 @@ run:
 	python ktz
 
 test:
-	mypy ktz
+	python -m mypy ktz
+
+build:
+	python setup.py

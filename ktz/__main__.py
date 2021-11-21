@@ -1,22 +1,25 @@
 #!/usr/bin/python
+from helpers import sig, error, success
 from config import Config
 from app import App
-from helpers import sig, exit_
 
 sig()
 config = Config()
 config.read()
 try:
     config.validate()
-except Exception as err:
-    exit_('Config error:\n' + err.args[0])
+    success('CONFIG LOADED: ' + config.path, False)
+except (FileNotFoundError, NotADirectoryError, ValueError) as e:
+    error(f'CONFIG ERROR ({config.path})', e)
+except Exception as e:
+    error('UNEXCPECTED ERROR', e)
 
 app = App(config)
 try:
     app.parse()
-except FileNotFoundError as err:
-    exit_('INVALID "MyClippings.txt" path: ' + err.args[0])
-except Exception as err:
-    exit_(err.args[0])
-app.write()
-exit_('TRANSFER COMPLETE')
+    app.write()
+except FileNotFoundError as e:
+    error('ERROR', e)
+except Exception as e:
+    error('UNEXPECTED ERROR', e)
+success('TRANSFER COMPLETE', True)

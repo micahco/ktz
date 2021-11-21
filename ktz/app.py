@@ -2,6 +2,7 @@
 import os
 from datetime import datetime
 from typing import Dict
+from helpers import bcolors
 from config import Config
 from models import Book, Note
 
@@ -16,11 +17,10 @@ class App:
     # open and parse `My Clippings.txt`
     def parse(self) -> None:
         clippings_path = self._get_path()
-        try:
-            with open(clippings_path, 'r', encoding='utf-8-sig', errors='ignore') as file:
-                clippings: list[str] = file.read().split('==========')
-        except:
-            raise FileNotFoundError(clippings_path or 'NONE')
+        if not os.path.isfile(clippings_path):
+            raise FileNotFoundError(clippings_path)
+        with open(clippings_path, 'r', encoding='utf-8-sig', errors='ignore') as file:
+            clippings: list[str] = file.read().split('==========')
         for clipping in clippings:
             if not self._is_valid_clipping(clipping): continue
             clipping_data = clipping.split('\n\n', 1) # [info , text]
@@ -33,7 +33,7 @@ class App:
             text = clipping_data[1].strip().replace('\n', '\n\n') # seperate note from highlighted text
             note = Note(loc, date, text)
             if not title in self.books:
-                print('\nTITLE: ' + title)
+                print(f'\n{bcolors.UNDERLINE}TITLE: {title}{bcolors.ENDC}')
                 author_first = input("AuthorFirst: ")
                 author_last = input("AuthorLast: ")
                 year_published = input("YearPublished: ")
@@ -50,7 +50,7 @@ class App:
             if not os.path.isdir(dir_):
                 os.mkdir(dir_)
             for note in book.notes:
-                path = self._validate_path(dir_ + '/' + book.author_last + book.year_published + '-' + note.loc + '.md')
+                path = self._validate_note_path(dir_ + '/' + book.author_last + book.year_published + '-' + note.loc + '.md')
                 # replace template_data with new data
                 data = template_data.replace('{{date}}', note.date)
                 data = data.replace('{{title}}', book.title)
@@ -72,8 +72,8 @@ class App:
     def _is_valid_clipping(self, clipping: str) -> bool:
         return ' | Added on ' in clipping
 
-    # handle duplicate files path
-    def _validate_path(self, path: str) -> str:
+    # handle duplicate note files
+    def _validate_note_path(self, path: str) -> str:
         if os.path.isfile(path):
             path = path.replace('.md', '-2.md')
             i = 2

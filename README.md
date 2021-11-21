@@ -9,11 +9,15 @@ transfer kindle clippings to Zettelkasten
 
 ## Usage
 
+* Run `setup.py` to generate executable script
+
 * Connect your kindle via usb
 
-* Run the program: `python ktz`
+* Run the executable script
 
-* The program will then prompt you for the path to the `My Clippings.txt` file on your kindle
+* Create config file
+
+* 
 
 #### Configuration
 
