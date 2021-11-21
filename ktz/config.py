@@ -1,36 +1,41 @@
 #!/usr/bin/python
+import os
 from configparser import RawConfigParser
-from os import path
-from helpers import exit_
+from shutil import copyfile
+from datetime import datetime
 
-class Config:
-    PATH = 'config.ini'
-    template_path: str
-    literature_path: str
-    date_format: str
+class Config():
+    _PATH = 'config.ini'
+    _TEMPLATE_PATH = 'config.template.ini'
+    _path: str
+    _rcp: RawConfigParser
+    store: dict
 
     def __init__(self):
-        self._validate_file
-        config = RawConfigParser()
-        config.read(self.PATH)
-        self.template_path = config['PATHS']['TemplatePath']
-        self.literature_path = config['PATHS']['LiteraturePath']
-        self.date_format = config['TEMPLATE']['DateFormat']
+        self._path = os.path.join(os.getcwd(), self._PATH)
+        self._rcp = RawConfigParser()
+        
+    def read(self) -> None:
+        if not os.path.isfile(self._path):
+            self.create()
+        self._rcp.read(self._path)
+        self.store = self._rcp['CONFIG'] # type: ignore
+
+    def create(self) -> None:
+        template_path = os.path.join(os.path.dirname(__file__), self._TEMPLATE_PATH)
+        copyfile(template_path, self._path)
+        self._rcp.read(self._path)
+        print('\nCreating new configuration file')
+        self._rcp.set('CONFIG', 'TemplatePath', input('TemplatePath = '))
+        self._rcp.set('CONFIG', 'LiteraturePath', input('LiteraturePath = '))
+        with open(self._path, 'w') as file:
+            self._rcp.write(file)
+        print('CREATED: ' + self._path)
 
     def validate(self) -> None:
-        try:
-            self._is_valid()
-        except FileNotFoundError as err:
-            raise Exception('FileNotFoundError (' + err.args[0] + '): ' + err.args[1])
-        except NotADirectoryError as err:
-            raise Exception('NotADirectoryError (' + err.args[0] + '): ' + err.args[1])
-
-    def _validate_file(self) -> None:
-        if not path.exists(self.PATH):
-            exit_('FileNotFoundError (Missing Config File): ')
-
-    def _is_valid(self) -> None:
-        if not path.isfile(self.template_path):
-            raise FileNotFoundError('TEMPLATE_PATH', self.template_path)
-        if not path.isdir(self.literature_path):
-            raise NotADirectoryError('LITERATURE_PATH', self.literature_path)
+        if not os.path.isfile(self.store['TemplatePath']):
+            raise Exception('Invalid TemplatePath: ' + self.store['TemplatePath'])
+        if not os.path.isdir(self.store['LiteraturePath']):
+            raise Exception('Invalid LiteraturePath: ' + self.store['LiteraturePath'])
+        if not self.store['DateFormat']:
+            raise Exception('Invalid DateFormat: ')

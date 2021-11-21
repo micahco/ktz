@@ -1,5 +1,6 @@
 *.txt
 !requirements.txt
+config.ini
 
 # python
 __pycache__

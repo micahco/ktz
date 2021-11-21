@@ -1,5 +1,4 @@
 #!/usr/bin/python
-from config import Config
 
 class Note:
     loc: str
