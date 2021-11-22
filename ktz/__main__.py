@@ -9,10 +9,6 @@ try:
     config.read()
     config.validate()
     success('LOADED: ' + config.path)
-except Exception as e:
-    error(e)
-
-try:
     app = App(config)
     app.parse()
     app.write()
