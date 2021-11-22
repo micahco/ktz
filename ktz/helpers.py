@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os
 import signal
+import platform 
 
 class bcolors:
     HEADER = '\033[95m'
@@ -14,7 +15,8 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def sig():
-        os.system('color')
+        if platform.system() == 'Windows':
+                os.system('color')
         signal.signal(signal.SIGINT, _signal_handler)
         
 def _signal_handler(signal, frame):
