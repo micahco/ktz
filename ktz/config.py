@@ -31,7 +31,7 @@ class Config():
         self._rcp.set('CONFIG', 'LiteraturePath', input('LiteraturePath = '))
         with open(self.path, 'w') as file:
             self._rcp.write(file)
-        success('CREATED: ' + self.path, False)
+        success('CREATED: ' + self.path)
         
 
     def validate(self) -> None:

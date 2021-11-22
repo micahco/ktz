@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from helpers import sig, error, success
+from helpers import sig, error, close, success
 from config import Config
 from app import App
 
@@ -8,7 +8,7 @@ config = Config()
 config.read()
 try:
     config.validate()
-    success('LOADED: ' + config.path, False)
+    success('LOADED: ' + config.path)
 except (FileNotFoundError, NotADirectoryError, ValueError) as e:
     error(f'ERROR ({config.path})', e)
 except Exception as e:
@@ -20,8 +20,6 @@ try:
     app.write()
 except FileNotFoundError as e:
     error('ERROR', e)
-except RuntimeError as e:
-    error('ABORTED', e)
 except Exception as e:
     error('UNEXPECTED ERROR', e)
-success('TRANSFER COMPLETE', True)
+close('TRANSFER COMPLETE')

@@ -4,5 +4,5 @@ run:
 test:
 	python -m mypy ktz
 
-build:
+batch:
 	python setup.py

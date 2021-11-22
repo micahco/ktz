@@ -18,7 +18,7 @@ class App:
     def parse(self) -> None:
         clippings_path = self._get_path()
         if not os.path.isfile(clippings_path):
-            raise FileNotFoundError(clippings_path)
+            raise FileNotFoundError(clippings_path or 'NONE')
         with open(clippings_path, 'r', encoding='utf-8-sig', errors='ignore') as file:
             clippings: list[str] = file.read().split('==========')
         for clipping in clippings:

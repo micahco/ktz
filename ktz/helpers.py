@@ -16,22 +16,28 @@ class bcolors:
 def sig():
         os.system('color')
         signal.signal(signal.SIGINT, _signal_handler)
+        
+def _signal_handler(signal, frame):
+        abort()
+
+def abort() -> None:
+        print(f'{bcolors.WARNING}\nABORTED\n{bcolors.ENDC}')
+        os._exit(0)
 
 def error(title: str, e: Exception) -> None:
         e_name = e.__class__.__name__
-        _exit(f'{bcolors.FAIL}{title}:{bcolors.ENDC}\n{e_name}: {e.args[0]}\n')
+        msg = f'{bcolors.FAIL}{title}:{bcolors.ENDC}\n{e_name}:'
+        for arg in e.args:
+                msg = msg + '\n' + arg
+        _exit(msg)
 
-def success(msg: str, exit_: bool) -> None:
-        msg = f'{bcolors.OKGREEN}{msg}{bcolors.ENDC}'
-        if exit_:
-                _exit(msg)
-        else:
-                print('\n' + msg)
+def success(msg: str) -> None:
+        print(f'\n{bcolors.OKGREEN}{msg}{bcolors.ENDC}')
+
+def close(msg: str) -> None:
+        _exit(f'\n{bcolors.OKGREEN}{msg}{bcolors.ENDC}')
 
 def _exit(msg: str) -> None:
         print('\n' + msg)
         input(f'\n{bcolors.BOLD}Press any key to exit{bcolors.ENDC}')
         os._exit(0)
-
-def _signal_handler(signal, frame):
-        _exit('ABORTED')
