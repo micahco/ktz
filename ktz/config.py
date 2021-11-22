@@ -33,11 +33,9 @@ class Config():
             self._rcp.write(file)
         success('CREATED: ' + self.path)
         
-
     def validate(self) -> None:
         if not os.path.isfile(self.store['TemplatePath']):
             raise FileNotFoundError('TemplatePath = ' + self.store['TemplatePath'])
-
         if not os.path.isdir(self.store['LiteraturePath']):
             raise NotADirectoryError('LiteraturePath = ' + self.store['LiteraturePath'])
 

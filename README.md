@@ -39,7 +39,7 @@ Loc: {{loc}}
 
 * `LiteraturePath`: path to your Zettelkasten's literature notes directory
 
-* `DateFormat`: [strftime](https://strftime.org/) format for {{date}} output
+* `DateFormat`: [strftime](https://strftime.org/) format for the `{{date}}` output
 
 * `MyClippingsPath`: *(optional)* default path to `My Clippings.txt` file.
     * Example: `MyClippingsPath = D:\Documents\My Clippings.txt`

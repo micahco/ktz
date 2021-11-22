@@ -4,18 +4,16 @@ from config import Config
 from app import App
 
 sig()
-config = Config()
-config.read()
 try:
+    config = Config()
+    config.read()
     config.validate()
     success('LOADED: ' + config.path)
-except (FileNotFoundError, NotADirectoryError, ValueError) as e:
-    error(e)
 except Exception as e:
     error(e)
 
-app = App(config)
 try:
+    app = App(config)
     app.parse()
     app.write()
 except Exception as e:
