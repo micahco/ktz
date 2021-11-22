@@ -16,7 +16,7 @@ class App:
 
     # open and parse `My Clippings.txt`
     def parse(self) -> None:
-        clippings_path = self._get_path()
+        clippings_path = self._get_clippings_path()
         if not os.path.isfile(clippings_path):
             raise FileNotFoundError(clippings_path or 'NONE')
         with open(clippings_path, 'r', encoding='utf-8-sig', errors='ignore') as file:
@@ -58,37 +58,32 @@ class App:
                 data = data.replace('{{loc}}', note.loc)
                 data = data.replace('{{text}}', note.text)
                 path = dir_ + '/' + book.author_last + book.year_published + '-' + note.loc + '.md'
-                path = self._validate_note_path(path, data, note.loc)
+                path = self._get_note_path(path, data)
                 with open(path, 'w', encoding='utf-8') as file:
                     file.write(data)
 
-    def _get_path(self) -> str:
+    def _get_clippings_path(self) -> str:
         prompt = '\n"My Clippings.txt" path: '
         default = self._config['MyClippingsPath']
         if default:
             prompt += f'({default}) '
         return input(prompt) or default
 
-    # validate clipping item
-    def _is_valid_clipping(self, clipping: str) -> bool:
-        return ' | Added on ' in clipping
-
     # handle duplicate note files
-    def _validate_note_path(self, path: str, data: str, loc: str) -> str:
-        copy = 0
+    def _get_note_path(self, path: str, data: str) -> str:
+        filename, ext = os.path.splitext(path)
+        n = ord('a')
         while (os.path.isfile(path)):
-            copy += 1
-            if (copy==10): break # overflow
-            # check if same note
+            if n == ord('z'):
+                break
             with open(path, 'r', encoding='utf-8') as file:
                 file_data = file.read()
             if data == file_data:
                 break
-            else:
-                filename, ext = os.path.splitext(path)
-                if copy == 1:
-                    filename = f'{filename}-{copy}'
-                else:
-                    filename = filename.replace(f'-{copy-1}', f'-{copy}')
-                path = f'{filename}{ext}'
+            path = filename + chr(n) + ext
+            n += 1
         return path
+
+    # validate clipping item
+    def _is_valid_clipping(self, clipping: str) -> bool:
+        return ' | Added on ' in clipping

@@ -10,16 +10,14 @@ try:
     config.validate()
     success('LOADED: ' + config.path)
 except (FileNotFoundError, NotADirectoryError, ValueError) as e:
-    error(f'ERROR ({config.path})', e)
+    error(e)
 except Exception as e:
-    error('UNEXCPECTED ERROR', e)
+    error(e)
 
 app = App(config)
 try:
     app.parse()
     app.write()
-except FileNotFoundError as e:
-    error('ERROR', e)
 except Exception as e:
-    error('UNEXPECTED ERROR', e)
+    error(e)
 close('TRANSFER COMPLETE')

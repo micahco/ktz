@@ -21,12 +21,12 @@ def _signal_handler(signal, frame):
         abort()
 
 def abort() -> None:
-        print(f'{bcolors.WARNING}\nABORTED\n{bcolors.ENDC}')
+        print(f'{bcolors.WARNING}\n\nABORTED{bcolors.ENDC}')
         os._exit(0)
 
-def error(title: str, e: Exception) -> None:
+def error(e: Exception) -> None:
         e_name = e.__class__.__name__
-        msg = f'{bcolors.FAIL}{title}:{bcolors.ENDC}\n{e_name}:'
+        msg = f'{bcolors.FAIL}{e_name}{bcolors.ENDC}:'
         for arg in e.args:
                 msg = msg + '\n' + arg
         _exit(msg)
