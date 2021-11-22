@@ -2,8 +2,11 @@
 !requirements.txt
 config.ini
 
+# dev
+.vscode/
+
 # python
-__pycache__
+__pycache__/
 Pipfile.lock
 
 # mypy
