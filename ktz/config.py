@@ -26,7 +26,7 @@ class Config():
         templatepath = os.path.join(os.path.dirname(__file__), self._TEMPLATEpath)
         copyfile(templatepath, self.path)
         self._rcp.read(self.path)
-        print('\nCreating new configuration file')
+        print('\nCreate new configuration file:')
         self._rcp.set('CONFIG', 'TemplatePath', input('TemplatePath = '))
         self._rcp.set('CONFIG', 'LiteraturePath', input('LiteraturePath = '))
         with open(self.path, 'w') as file:

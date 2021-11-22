@@ -5,4 +5,4 @@ test:
 	python -m mypy ktz
 
 batch:
-	python setup.py
+	python batch.py

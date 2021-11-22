@@ -10,7 +10,6 @@ class Note:
         self.date = date
         self.text = text
 
-
 class Book:
     title: str
     author_first: str

@@ -20,9 +20,6 @@ def sig():
         signal.signal(signal.SIGINT, _signal_handler)
         
 def _signal_handler(signal, frame):
-        abort()
-
-def abort() -> None:
         print(f'{bcolors.WARNING}\n\nABORTED{bcolors.ENDC}')
         os._exit(0)
 
