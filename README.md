@@ -23,7 +23,7 @@ Configure the program for use by editing `config.ini`
 
     For reference, here is what my template looks like in my Zettelkasten:
 
-`Kindle.md`
+*~/zettelkasten/templates/Kindle.md*
 
 ```
 Date: {{date}} 
