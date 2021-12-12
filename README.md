@@ -1,7 +1,5 @@
 # ktz
 
-*kindle-to-zettelkasten*
-
 transfer kindle clippings to Zettelkasten
 
 <sup>tested on Python *3.10.0* Win 10</sup>
